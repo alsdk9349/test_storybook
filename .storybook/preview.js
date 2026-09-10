@@ -1,3 +1,6 @@
+// 디자인 토큰 - 모든 스토리에 공통 적용
+import '../src/styles/tokens.css';
+
 /** @type { import('@storybook/vue3-vite').Preview } */
 const preview = {
   parameters: {
@@ -17,12 +20,25 @@ const preview = {
       test: 'todo',
     },
 
-    // 좌측 트리 정렬 순서 - 가이드 문서를 항상 맨 위에 노출
-    options: {
-      storySort: {
-        order: ['소개', '공통'],
+    // 캔버스 배경 - 라이트 테마 기준
+    backgrounds: {
+      options: {
+        light: { name: '라이트 (base-100)', value: '#ffffff' },
+        surface: { name: '컨트롤 표면 (base-200)', value: '#f1f4f9' },
       },
     },
+
+    // 좌측 트리 정렬 순서 - 가이드 문서를 항상 위에 노출
+    options: {
+      storySort: {
+        order: ['소개', '가이드', ['색상', '테마 토큰', '타이포그래피'], '컴포넌트', '공통'],
+      },
+    },
+  },
+
+  // 기본 배경값
+  initialGlobals: {
+    backgrounds: { value: 'light' },
   },
 };
 
