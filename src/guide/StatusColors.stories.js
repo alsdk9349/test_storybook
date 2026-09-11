@@ -55,6 +55,12 @@ export const 등급_상태_팔레트 = {
     },
     template: `
       <div style="max-width:960px;">
+
+        <ColorTable title="B. 등급 · 상태 관련 색상" />
+
+        <NoteBox variant="warn" title="상태색은 색만으로 뜻을 전달하지 않음 - 반드시 아이콘 + 라벨을 함께 사용 (WCAG SC 1.4.1)">
+        </NoteBox>
+
         <ColorTable title="대기질 등급 — 에어코리아 공식" :rows="대기질" />
         <NoteBox variant="info">
           법정 순색(#0000FF · #00FF00 …) 대신 에어코리아 자신이 실제 화면에 쓰는 가독 값을 따름 — 규정 색상 계열은 유지
@@ -66,16 +72,12 @@ export const 등급_상태_팔레트 = {
         </NoteBox>
 
         <ColorTable title="이벤트 심각도 (표준 없음)" :rows="심각도" />
-        <NoteBox variant="warn" title="'높음'과 '보통'을 반드시 분리">
-          현재 KPI는 '높음'과 '보통'이 둘 다 같은 경고색이라 구분이 안 됨 → 위 색으로 분리 필요
+        <NoteBox variant="warn" title="현재 KPI는 '높음'과 '보통'이 둘 다 같은 경고색이라 구분이 안 됨 → 위 색으로 분리 필요">
         </NoteBox>
 
         <ColorTable title="운영 상태" :rows="운영상태" />
         <ColorTable title="정산 상태" :rows="정산상태" />
 
-        <NoteBox variant="warn" title="상태색은 색만으로 뜻을 전달하지 않음">
-          반드시 아이콘 + 라벨을 함께 사용 (WCAG SC 1.4.1)
-        </NoteBox>
       </div>
     `,
   }),

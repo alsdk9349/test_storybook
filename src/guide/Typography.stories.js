@@ -1,87 +1,138 @@
-// ③ 폰트 — Pretendard (대체 순서: Pretendard -> 맑은 고딕)
+import ColorTable from './ColorTable.vue';
+import SpecTable from './SpecTable.vue';
+import NoteBox from './NoteBox.vue';
+
+// ③ 폰트 (Pretendard)
+// A · B · C 색상 가이드와 같은 형식으로 정리한다.
 export default {
   title: '가이드/타이포그래피',
+  component: SpecTable,
   parameters: {
+    // 문서형 스토리라 Controls 패널은 숨긴다.
     controls: { disable: true },
   },
 };
 
-export const 크기_위계 = {
-  render: () => ({
-    template: `
-      <div style="max-width:960px; font-family:var(--font-sans); color:#1b2430;">
-        <h3 style="font-size:18px; font-weight:600; margin:0 0 6px;">크기 위계</h3>
-        <p style="font-size:12px; color:rgba(0,0,0,.6); margin:0 0 16px;">
-          Pretendard Variable / Pretendard · 대체 순서: pretendard -> 맑은 고딕
-        </p>
+// 크기 위계
+const 크기위계 = [
+  {
+    name: '페이지 타이틀',
+    value: '24px / 800',
+    sample: '에너지 자급자족 현황',
+    sampleStyle: { fontSize: '24px', fontWeight: 800 },
+  },
+  {
+    name: 'KPI 값 (stat-value)',
+    value: '24px / 800 · 상태색',
+    sample: '1,284 kW',
+    sampleStyle: { fontSize: '24px', fontWeight: 800, color: '#ab44c8' },
+  },
+  {
+    name: '박스 제목 (box-header)',
+    value: '18px / 600',
+    sample: '시간대별 발전량',
+    sampleStyle: { fontSize: '18px', fontWeight: 600 },
+  },
+  {
+    name: '본문 · 테이블 셀 · 입력',
+    value: '14px / 400',
+    sample: '여수국가산업단지 태양광 발전설비 운영 현황',
+    sampleStyle: { fontSize: '14px', fontWeight: 400 },
+  },
+  {
+    name: '필드 라벨 · 위젯 제목',
+    value: '12px / 600',
+    sample: '산단',
+    sampleStyle: { fontSize: '12px', fontWeight: 600 },
+  },
+  {
+    name: 'KPI 라벨 · 보조 정보',
+    value: '12px / 400 · 검정 60%',
+    sample: '전일 대비 +3.2%',
+    sampleStyle: { fontSize: '12px', fontWeight: 400, color: 'rgba(0,0,0,.6)' },
+  },
+  {
+    name: '범례 · 캡션',
+    value: '11px / 400 · 검정 70%',
+    sample: '단위: kWh · 출처: FEMS',
+    sampleStyle: { fontSize: '11px', fontWeight: 400, color: 'rgba(0,0,0,.7)' },
+  },
+];
 
-        <div style="border:1px solid #dfe4ec; border-radius:8px; overflow:hidden;">
-          <div style="display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.06);">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">페이지 타이틀 · 24px / 800</span>
-            <span style="font-size:24px; font-weight:800;">에너지 자급자족 현황</span>
-          </div>
-          <div style="display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.06);">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">KPI 값 · 24px / 800 · 상태색</span>
-            <span style="font-size:24px; font-weight:800; color:#ab44c8;">1,284 kW</span>
-          </div>
-          <div style="display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.06);">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">박스 제목 · 18px / 600</span>
-            <span style="font-size:18px; font-weight:600;">시간대별 발전량</span>
-          </div>
-          <div style="display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.06);">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">본문 · 테이블 셀 · 입력 · 14px / 400</span>
-            <span style="font-size:14px; font-weight:400;">여수국가산업단지 태양광 발전설비 운영 현황</span>
-          </div>
-          <div style="display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.06);">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">필드 라벨 · 위젯 제목 · 12px / 600</span>
-            <span style="font-size:12px; font-weight:600;">산단</span>
-          </div>
-          <div style="display:flex; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(0,0,0,.06);">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">KPI 라벨 · 보조 정보 · 12px / 400 · 검정 60%</span>
-            <span style="font-size:12px; font-weight:400; color:rgba(0,0,0,.6);">전일 대비 +3.2%</span>
-          </div>
-          <div style="display:flex; align-items:center; padding:14px 16px;">
-            <span style="width:200px; font-size:12px; color:rgba(0,0,0,.6);">범례 · 캡션 · 11px / 400 · 검정 70%</span>
-            <span style="font-size:11px; font-weight:400; color:rgba(0,0,0,.7);">단위: kWh · 출처: FEMS</span>
-          </div>
-        </div>
-      </div>
-    `,
-  }),
-};
+// 투명도 위계 - 검정 알파로 층을 만든다
+const 투명도위계 = [
+  {
+    name: '기본 텍스트',
+    value: '#1b2430 (100%)',
+    sample: '기본 텍스트입니다',
+    sampleStyle: { fontSize: '14px', color: '#1b2430' },
+  },
+  {
+    name: '위젯 제목',
+    value: '검정 90%',
+    sample: '위젯 제목입니다',
+    sampleStyle: { fontSize: '14px', color: 'rgba(0,0,0,.9)' },
+  },
+  {
+    name: '범례 라벨',
+    value: '검정 70%',
+    sample: '범례 라벨입니다',
+    sampleStyle: { fontSize: '14px', color: 'rgba(0,0,0,.7)' },
+  },
+  {
+    name: '보조 라벨 · KPI 제목',
+    value: '검정 60%',
+    sample: '보조 라벨입니다',
+    sampleStyle: { fontSize: '14px', color: 'rgba(0,0,0,.6)' },
+  },
+  {
+    name: '비활성 탭',
+    value: '검정 55%',
+    sample: '비활성 탭입니다',
+    sampleStyle: { fontSize: '14px', color: 'rgba(0,0,0,.55)' },
+  },
+  {
+    name: '플레이스홀더 · 빈 상태 문구',
+    value: '검정 40%',
+    sample: '기업명 또는 초성 검색',
+    sampleStyle: { fontSize: '14px', color: 'rgba(0,0,0,.4)' },
+  },
+];
 
-export const 투명도_위계 = {
+export const 폰트_위계 = {
   render: () => ({
+    components: { ColorTable, SpecTable, NoteBox },
+    setup() {
+      return { 크기위계, 투명도위계 };
+    },
     template: `
-      <div style="max-width:640px; font-family:var(--font-sans);">
-        <h3 style="font-size:18px; font-weight:600; margin:0 0 6px;">투명도 위계 — 검정 알파로 층을 만든다</h3>
-        <p style="font-size:12px; color:rgba(0,0,0,.6); margin:0 0 16px;">
+      <div style="max-width:960px;">
+
+        <ColorTable title="폰트 (Pretendard, 현재 구미에서도 사용 중)" />
+
+        <ColorTable title="폰트 체인" level="section" />
+        <NoteBox variant="info" title="Pretendard Variable / Pretendard">
+          대체 순서: pretendard → 맑은 고딕
+        </NoteBox>
+
+        <SpecTable title="크기 위계" :rows="크기위계" />
+
+        <SpecTable title="투명도 위계 — 검정 알파로 층을 만든다" name-label="단계" :rows="투명도위계" />
+        <NoteBox variant="info">
           색을 늘리지 않고 알파만으로 정보의 층을 구분한다.
-        </p>
+        </NoteBox>
 
-        <div style="border:1px solid #dfe4ec; border-radius:8px; padding:8px 0;">
-          <div style="padding:10px 16px; font-size:14px; color:#1b2430;">기본 텍스트 #1b2430 (100%)</div>
-          <div style="padding:10px 16px; font-size:14px; color:rgba(0,0,0,.9);">위젯 제목 (90%)</div>
-          <div style="padding:10px 16px; font-size:14px; color:rgba(0,0,0,.7);">범례 라벨 (70%)</div>
-          <div style="padding:10px 16px; font-size:14px; color:rgba(0,0,0,.6);">보조 라벨 · KPI 제목 (60%)</div>
-          <div style="padding:10px 16px; font-size:14px; color:rgba(0,0,0,.55);">비활성 탭 (55%)</div>
-          <div style="padding:10px 16px; font-size:14px; color:rgba(0,0,0,.4);">플레이스홀더 · 빈 상태 문구 (40%)</div>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-export const 지켜야_할_것 = {
-  render: () => ({
-    template: `
-      <div style="max-width:640px; font-family:var(--font-sans);">
-        <div style="border:1px solid #cfe3f5; background:#eef6fb; border-radius:8px; padding:16px 18px; font-size:13px; line-height:1.9;">
-          <strong>지켜야 할 것 (웹표준 연계)</strong><br />
+        <ColorTable title="지켜야 할 것 (웹표준 연계)" level="section" />
+        <NoteBox variant="warn">
           · KPI 숫자는 24px + bold 유지 — 줄이면 4.5:1 대비가 요구되어 위반<br />
-          · 작은 텍스트(범례·축)에는 상태색 대신 기본 텍스트색 + 색 마커 사용<br />
-          · 다른 플랫폼 적용 시 이 폰트 체인과 크기·투명도 위계를 그대로 가져가면 라이트 테마 톤이 동일하게 재현됨
-        </div>
+          · 작은 텍스트(범례 · 축)에는 상태색 대신 기본 텍스트색 + 색 마커 사용
+        </NoteBox>
+
+        <ColorTable title="다른 플랫폼 적용 가이드" level="section" />
+        <NoteBox variant="info">
+          이 폰트 체인과 크기 · 투명도 위계를 그대로 가져가면 라이트 테마 톤이 동일하게 재현된다
+        </NoteBox>
+
       </div>
     `,
   }),

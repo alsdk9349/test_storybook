@@ -31,7 +31,7 @@ const 에너지색상 = [
   {
     name: '전력 수요(부하)',
     hex: '#ab44c8',
-    note: '표준(Fraunhofer)은 진회색이지만 기존 보라 유지 — 한전 파랑과 색각이상 구분이 어려움(ΔE 8.3) -> 함께 나오는 차트는 직접 라벨 필수',
+    note: '표준(Fraunhofer)은 진회색이지만 기존 보라 유지 — 한전 파랑과 색각이상 구분이 어려움(ΔE 8.3)이라 함께 나오는 차트는 직접 라벨 필수',
   },
   {
     name: '열 / P2H / 난방',
@@ -73,7 +73,10 @@ export const 에너지_팔레트 = {
     },
     template: `
       <div style="max-width:960px;">
-        <ColorTable title="A. 에너지 관련 색상" :rows="에너지색상" />
+        <!-- 대제목 - rows 없이 title만 넘기면 제목만 크게 출력된다 -->
+        <ColorTable title="A. 에너지 관련 색상" />
+
+        <ColorTable :rows="에너지색상" />
 
         <!-- 원본 슬라이드와 동일하게 하단에 두 개의 주석 박스를 나란히 배치한다. -->
         <div style="display:flex; gap:14px; flex-wrap:wrap;">

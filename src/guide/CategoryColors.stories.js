@@ -25,17 +25,17 @@ const 업종슬롯 = [
 ];
 
 const 자원유형 = [
-  { name: '기업', hex: '#3670cd', note: '한전 계통 색 재사용' },
-  { name: '태양광', hex: '#b48c00', note: '에너지 팔레트 재사용' },
-  { name: 'ESS', hex: '#009a7b', note: '에너지 팔레트 재사용' },
-  { name: 'P2H', hex: '#d82f2a', note: '에너지 팔레트 재사용' },
-  { name: '인버터', hex: '#d22e68', note: '에너지 팔레트 재사용' },
-  { name: 'FEMS', hex: '#019eb9', note: '에너지 팔레트 재사용' },
+  { name: '기업', hex: '#3670cd', note: '' },
+  { name: '태양광', hex: '#b48c00', note: '' },
+  { name: 'ESS', hex: '#009a7b', note: '' },
+  { name: 'P2H', hex: '#d82f2a', note: '' },
+  { name: '인버터', hex: '#d22e68', note: '' },
+  { name: 'FEMS', hex: '#019eb9', note: '' },
 ];
 
 const 산단 = [
-  { name: '여수', hex: '#2AC8B4', note: '메인 지도의 산단 경계선 색 기준' },
-  { name: '율촌', hex: '#DCA830', note: '메인 지도의 산단 경계선 색 기준' },
+  { name: '여수', hex: '#2AC8B4', note: '' },
+  { name: '율촌', hex: '#DCA830', note: '' },
 ];
 
 export const 카테고리_팔레트 = {
@@ -46,6 +46,9 @@ export const 카테고리_팔레트 = {
     },
     template: `
       <div style="max-width:960px;">
+        <!-- 대제목 - rows 없이 title만 넘기면 제목만 크게 출력된다 -->
+        <ColorTable title="C. 카테고리 — 값의 분류" />
+
         <SlotTable title="업종 — 사용량 상위 7개 + 기타 (슬롯 순서 고정)" :rows="업종슬롯" />
         <NoteBox variant="info" title="이 항목만 light / dark 값이 다름">
           dark 배경 파이에서는 7색 구분 불가(ΔE 4.7) → 직접 라벨 필수, 파이보다 정렬된 막대 권장<br />

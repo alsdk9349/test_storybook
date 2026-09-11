@@ -1,10 +1,12 @@
 import ColorTable from './ColorTable.vue';
+import NoteBox from './NoteBox.vue';
 
 // ① 테마 토큰과 레이아웃 — 라이트 테마 기준
 export default {
-  title: '가이드/테마 토큰',
+  title: '가이드/테마 토큰과 레이아웃',
   component: ColorTable,
   parameters: {
+    // 문서형 스토리라 Controls 패널은 숨긴다.
     controls: { disable: true },
   },
 };
@@ -33,19 +35,28 @@ const 포인트색 = [
 
 export const 토큰_목록 = {
   render: () => ({
-    components: { ColorTable },
+    components: { ColorTable, NoteBox },
     setup() {
       return { 테마토큰, 포인트색 };
     },
     template: `
       <div style="max-width:960px;">
-        <ColorTable title="디자인 토큰 (라이트 테마)" :rows="테마토큰" />
+
+        <ColorTable title="테마 토큰과 레이아웃 — 라이트 테마 기준" />
+
+        <ColorTable title="디자인 토큰 (daisyUI 라이트 테마 기준)" :rows="테마토큰" />
+
         <ColorTable title="포인트 색 사용처" :rows="포인트색" />
-        <div style="border:1px solid #dfe4ec; background:#f7f9fc; border-radius:8px; padding:14px 16px; font-size:12px; line-height:1.8;">
-          <strong>모서리 반경</strong> — 카드·박스 8px(.5rem) · 버튼·입력 4px(.25rem)<br />
-          <strong>상단바 높이</strong> — 54px · <strong>콘텐츠 여백</strong> 20px(p-5)<br />
-          <strong>이식 기준</strong> — 토큰 이름 기준으로 옮긴다(base-100/200/300 · neutral · primary …)
-        </div>
+
+        <NoteBox variant="info">
+          모서리 반경 — 카드 · 박스 8px(.5rem) · 버튼 · 입력 4px(.25rem)
+        </NoteBox>
+
+        <ColorTable title="다른 플랫폼 적용 가이드" level="section" />
+        <NoteBox variant="info">
+          토큰 이름 기준으로 이식한다 (base-100 / 200 / 300 · neutral · primary …)
+        </NoteBox>
+
       </div>
     `,
   }),
@@ -54,33 +65,46 @@ export const 토큰_목록 = {
 // 서브 페이지 레이아웃 구성 — 사이드바 / 상단바 / 카드 배치
 export const 화면_레이아웃 = {
   render: () => ({
+    components: { ColorTable },
     template: `
-      <div style="max-width:960px; border:1px solid #dfe4ec; border-radius:8px; overflow:hidden; display:flex; height:420px; font-family:var(--font-sans);">
-        <!-- 사이드바 #f7f9fc -->
-        <aside style="width:180px; background:#f7f9fc; border-right:1px solid #dfe4ec; padding:16px 12px;">
-          <div style="font-size:18px; font-weight:800; color:#1e7c4b; margin-bottom:20px;">MG</div>
-          <div style="font-size:14px; font-weight:600; color:#1565c0; padding:8px 10px; background:rgba(21,101,192,.08); border-radius:4px;">활성 메뉴</div>
-          <div style="font-size:14px; color:rgba(0,0,0,.55); padding:8px 10px;">일반 메뉴</div>
-          <div style="font-size:14px; color:rgba(0,0,0,.55); padding:8px 10px;">일반 메뉴</div>
+      <div style="max-width:960px;">
+      <ColorTable title="화면 레이아웃 구성 (서브 페이지)" />
+
+      <div style="max-width:820px; border:1px solid #dfe4ec; border-radius:8px; overflow:hidden; display:flex; height:420px; font-family:var(--font-sans); background:#ffffff;">
+
+        <!-- 사이드바 -->
+        <aside style="width:130px; background:#f7f9fc; border-right:1px solid #dfe4ec; padding:14px 12px;">
+          <div style="font-size:12px; font-weight:700; line-height:1.6;">
+            사이드바<br />#f7f9fc
+          </div>
         </aside>
 
-        <div style="flex:1; display:flex; flex-direction:column; background:#ffffff;">
+        <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
           <!-- 상단바 높이 54px -->
-          <header style="height:54px; background:#f7f9fc; border-bottom:1px solid #dfe4ec; display:flex; align-items:center; padding:0 20px; font-size:14px; font-weight:600;">
+          <header style="height:54px; background:#f7f9fc; border-bottom:1px solid #dfe4ec; display:flex; align-items:center; padding:0 18px; font-size:12px; font-weight:700;">
             상단바 #f7f9fc (높이 54px)
           </header>
 
-          <!-- 콘텐츠 영역 #ffffff · 여백 20px -->
-          <main style="flex:1; padding:20px; background:#ffffff;">
-            <div style="background:#f7f9fc; border:1px solid #dfe4ec; border-radius:8px; padding:20px; height:100%;">
-              <div style="font-size:18px; font-weight:600; margin-bottom:8px;">카드(data-box) 제목 18px/600</div>
-              <div style="font-size:14px; color:rgba(0,0,0,.7); line-height:1.7;">
-                배경 #f7f9fc · 테두리 #dfe4ec 1px · 반경 8px · 콘텐츠 여백 20px(p-5)<br />
-                본문 14px
-              </div>
+          <!-- 콘텐츠 영역 #ffffff · 여백 20px · 카드 2개 -->
+          <main style="flex:1; padding:20px; background:#ffffff; display:flex; flex-direction:column; gap:16px; position:relative;">
+
+            <div style="flex:1; background:#f7f9fc; border:1px solid #dfe4ec; border-radius:8px; padding:16px 18px; font-size:12px; line-height:1.8;">
+              카드 (data-box) #f7f9fc<br />
+              테두리 #dfe4ec 1px · 반경 8px
             </div>
+
+            <div style="flex:1; background:#f7f9fc; border:1px solid #dfe4ec; border-radius:8px; padding:16px 18px; font-size:12px; line-height:1.8;">
+              박스 제목 18px/600 · 본문 14px<br />
+              콘텐츠 여백 20px(p-5)
+            </div>
+
+            <!-- 콘텐츠 바탕색 표기 -->
+            <span style="position:absolute; right:20px; bottom:6px; font-size:12px; color:rgba(0,0,0,.6);">#ffffff</span>
           </main>
         </div>
+      </div>
+
       </div>
     `,
   }),

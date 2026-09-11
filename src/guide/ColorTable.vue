@@ -13,19 +13,39 @@ defineProps({
     default: '',
   },
   // 색상 목록 - [{ name, hex, note }]
+  // 비워 두면 표를 그리지 않고 제목만 출력한다 (제목 전용 용도).
   rows: {
     type: Array,
-    required: true,
+    default: () => [],
+  },
+  // 제목 크기
+  // 'auto'    - 표가 있으면 소제목, 없으면 대제목 (기본)
+  // 'page'    - 대제목 24px / 800
+  // 'section' - 소제목 18px / 600
+  level: {
+    type: String,
+    default: 'auto',
+    validator: (value) => ['auto', 'page', 'section'].includes(value),
   },
 });
 </script>
 
 <template>
   <section class="color-table">
-    <h3 v-if="title" class="color-table__title">{{ title }}</h3>
+    <h3
+      v-if="title"
+      class="color-table__title"
+      :class="{
+        'color-table__title--page':
+          level === 'page' || (level === 'auto' && rows.length === 0),
+      }"
+    >
+      {{ title }}
+    </h3>
     <p v-if="caption" class="color-table__caption">{{ caption }}</p>
 
-    <table class="color-table__grid">
+    <!-- 행이 없으면 표를 그리지 않는다 - 제목만 쓰는 경우 빈 헤더가 남지 않도록 -->
+    <table v-if="rows.length" class="color-table__grid">
       <thead>
         <tr>
           <th class="col-name">항목</th>
@@ -59,6 +79,13 @@ defineProps({
   font-size: var(--fs-box-title);
   font-weight: var(--fw-bold);
   margin: 0 0 6px;
+}
+
+/* 표 없이 제목만 쓸 때 - 슬라이드 제목처럼 크게 */
+.color-table__title--page {
+  font-size: var(--fs-title);
+  font-weight: var(--fw-black);
+  margin-bottom: 0;
 }
 
 .color-table__caption {
