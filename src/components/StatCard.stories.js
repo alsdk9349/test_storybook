@@ -30,14 +30,15 @@ export const 알람_심각도_KPI = {
       <div style="font-family:var(--font-sans);">
         <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
           <StatCard label="심각" value="2" unit="건" value-color="#ce2b2d" />
-          <StatCard label="높음" value="5" unit="건" value-color="#F57C00" />
-          <StatCard label="보통" value="11" unit="건" value-color="#FBC02D" />
+          <StatCard label="높음" value="5" unit="건" value-color="#8f6100" />
+          <StatCard label="보통" value="11" unit="건" value-color="#b8860b" />
           <StatCard label="낮음" value="24" unit="건" value-color="#1b6fbf" />
           <StatCard label="정상" value="118" unit="건" value-color="#1e7c4b" />
         </div>
         <div style="border:1px solid #f0c9b8; background:#fcefe9; border-radius:8px; padding:14px 16px; font-size:12px; line-height:1.8; max-width:720px;">
           <strong style="color:#c0392b;">기존 문제</strong> — '높음'과 '보통'이 둘 다 warning(#8f6100)이라 실서비스에서 구분되지 않음.<br />
-          위 예시처럼 '보통'을 #FBC02D 로 분리해 반영한다.
+          색상 가이드 권고값은 차트용 #FBC02D 이지만, 흰 배경 대비가 1.65 라 KPI 숫자에는 쓸 수 없다.<br />
+          위 예시처럼 명도를 낮춘 #b8860b 로 '높음'(#8f6100)과 분리한다 — 차트 마커는 #FBC02D 를 그대로 쓴다.
         </div>
       </div>
     `,

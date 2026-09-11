@@ -39,14 +39,20 @@ defineProps({
 });
 
 defineEmits(['update:modelValue']);
+
+// 라벨과 입력 요소를 연결할 고유 id
+// 연결하지 않으면 스크린리더가 입력의 이름을 읽지 못한다 (WCAG - 접근 가능한 이름)
+const 필드아이디 = `field-${Math.random().toString(36).slice(2, 9)}`;
 </script>
 
 <template>
   <div class="field">
-    <label v-if="label" class="field__label">{{ label }}</label>
+    <label v-if="label" class="field__label" :for="필드아이디">{{ label }}</label>
 
     <select
       v-if="type === 'select'"
+      :id="필드아이디"
+      :aria-label="label || undefined"
       class="field__control"
       :class="`field__control--${surface}`"
       :value="modelValue"
@@ -57,6 +63,8 @@ defineEmits(['update:modelValue']);
 
     <input
       v-else
+      :id="필드아이디"
+      :aria-label="label || placeholder || undefined"
       class="field__control"
       :class="`field__control--${surface}`"
       type="text"

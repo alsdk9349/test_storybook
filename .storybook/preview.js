@@ -18,6 +18,15 @@ const preview = {
     // 'off'   - 검사 끄기
     a11y: {
       test: 'todo',
+      config: {
+        rules: [
+          // 'region' 규칙 제외
+          // 스토리북 캔버스는 컴포넌트 하나만 띄우는 화면이라
+          // header · main 같은 랜드마크가 없는 것이 정상이다.
+          // 실제 페이지가 아니므로 이 위반은 컴포넌트의 문제가 아니다.
+          { id: 'region', enabled: false },
+        ],
+      },
     },
 
     // 캔버스 배경 - 라이트 테마 기준

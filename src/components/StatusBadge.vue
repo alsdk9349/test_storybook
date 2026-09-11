@@ -61,7 +61,12 @@ const 색 = computed(() => 색상표[props.group]?.[props.status] ?? '#94A3B8');
 </script>
 
 <template>
-  <span class="badge" :style="{ borderColor: 색, color: 색 }">
+  <!--
+    라벨 글자는 기본 텍스트색을 쓰고, 상태는 테두리와 도형 마커의 색으로 전달한다.
+    12px 작은 글자에 상태색을 쓰면 대비 4.5:1을 만족하지 못하기 때문이며,
+    색상 가이드의 '작은 텍스트에는 상태색 대신 기본 텍스트색 + 색 마커' 원칙과도 일치한다.
+  -->
+  <span class="badge" :style="{ borderColor: 색 }">
     <span class="badge__dot" :style="{ backgroundColor: 색 }" aria-hidden="true"></span>
     <span class="badge__label">{{ status }}</span>
   </span>
@@ -78,6 +83,7 @@ const 색 = computed(() => 색상표[props.group]?.[props.status] ?? '#94A3B8');
   font-size: var(--fs-label);
   font-weight: var(--fw-bold);
   line-height: 1;
+  color: var(--base-content);
   background-color: var(--base-100);
   border: 1px solid;
   border-radius: 999px;

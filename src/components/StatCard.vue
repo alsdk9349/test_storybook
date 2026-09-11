@@ -48,7 +48,8 @@ defineProps({
   gap: 4px;
   min-width: 160px;
   padding: 16px 18px;
-  background-color: var(--neutral);
+  /* 값에 상태색을 쓰므로 대비 기준(3:1)이 성립하는 흰 배경을 쓴다 */
+  background-color: var(--base-100);
   border: var(--card-border);
   border-radius: var(--radius-card);
   font-family: var(--font-sans);
@@ -68,10 +69,12 @@ defineProps({
   line-height: 1.2;
 }
 
+/* 단위는 14px 작은 글자라 상태색 대신 기본 텍스트색을 쓴다 (대비 4.5:1 확보) */
 .stat__unit {
   font-size: var(--fs-body);
   font-weight: var(--fw-bold);
   margin-left: 3px;
+  color: var(--base-content);
 }
 
 /* 보조 정보 12px · 검정 60% */
