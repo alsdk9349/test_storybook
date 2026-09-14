@@ -36,9 +36,7 @@ export const 알람_심각도_KPI = {
           <StatCard label="정상" value="118" unit="건" value-color="#1e7c4b" />
         </div>
         <div style="border:1px solid #f0c9b8; background:#fcefe9; border-radius:8px; padding:14px 16px; font-size:12px; line-height:1.8; max-width:720px;">
-          <strong style="color:#c0392b;">기존 문제</strong> — '높음'과 '보통'이 둘 다 warning(#8f6100)이라 실서비스에서 구분되지 않음. 위 예시는 현재 상태 그대로다.<br />
-          색상 가이드 권고값은 차트용 #FBC02D 이지만, 흰 배경 대비가 1.65 라 KPI 숫자에는 쓸 수 없다.<br />
-          KPI 숫자용 '보통' 색은 아직 정해지지 않았다 — 색상 가이드 담당자와 별도 지정 필요.
+          <strong style="color:#c0392b;">기존 문제</strong> — '높음'과 '보통'이 둘 다 warning(#8f6100)이라 실서비스에서 구분되지 않음. 위 예시는 현재 상태 그대로이며, 권고값은 #FBC02D <br />
         </div>
       </div>
     `,
