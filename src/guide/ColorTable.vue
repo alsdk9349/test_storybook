@@ -61,7 +61,8 @@ defineProps({
             <span class="chip" :style="{ backgroundColor: row.hex }"></span>
           </td>
           <td class="cell-hex">{{ row.hex }}</td>
-          <td class="cell-note">{{ row.note }}</td>
+          <!-- row.noteColor 를 지정하면 그 행의 참고사항만 색을 바꾼다 (없으면 기존 색 그대로) -->
+          <td class="cell-note" :style="row.noteColor ? { color: row.noteColor } : null">{{ row.note }}</td>
         </tr>
       </tbody>
     </table>

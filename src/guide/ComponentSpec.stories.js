@@ -17,10 +17,11 @@ export default {
 };
 
 // 그리드 예시 데이터 - 원본 슬라이드의 게시판 화면
+// 원본 슬라이드처럼 모든 열을 가운데 정렬한다
 const 그리드컬럼 = [
   { key: 'no', label: 'No', width: '70px', align: 'center' },
-  { key: 'title', label: '게시물제목' },
-  { key: 'writer', label: '입력자', width: '140px' },
+  { key: 'title', label: '게시물제목', align: 'center' },
+  { key: 'writer', label: '입력자', width: '140px', align: 'center' },
   { key: 'date', label: '입력일시', width: '140px', align: 'center' },
 ];
 
@@ -80,7 +81,8 @@ export const 컴포넌트_규격 = {
         <ColorTable title="입력 · 셀렉트" level="section" />
         <div style="display:flex; gap:16px; align-items:flex-end; margin-bottom:14px; flex-wrap:wrap;">
           <GuideField label="산단" type="select" :options="['전체','여수','율촌']" model-value="전체" />
-          <GuideField label="기업명" placeholder="기업명 또는 초성 검색" />
+          <!-- 원본 슬라이드에서 이 입력은 그리드 컨트롤 배경(#f1f4f9) 이다 -->
+          <GuideField label="기업명" placeholder="기업명 또는 초성 검색" surface="grid" />
         </div>
         <NoteBox variant="info">
           · 필드 라벨 12px/600 · 입력 글자 14px/400 · 반경 4~5px<br />
@@ -88,13 +90,8 @@ export const 컴포넌트_규격 = {
           · 테두리는 검정 10~14% · 플레이스홀더는 검정 55%
         </NoteBox>
 
-        <ColorTable title="KPI 요약 (stat)" level="section" />
-        <div style="display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
-          <StatCard label="현재 부하" value="1,284" unit="kW" value-color="var(--energy-load)" />
-          <StatCard label="태양광 발전량" value="842" unit="kWh" value-color="var(--energy-solar)" />
-        </div>
         <NoteBox variant="info">
-          · 라벨 12px 검정 60% · 값 24px/800 상태색<br />
+          · KPI 요약 (stat) - 라벨 12px 검정 60% · 값 24px/800 상태색<br />
           · 예: 부하 KPI는 text-energy-load(#ab44c8) — 색상 가이드 팔레트 연동
         </NoteBox>
 
@@ -103,17 +100,12 @@ export const 컴포넌트_규격 = {
           <DataGrid :columns="그리드컬럼" :rows="그리드데이터" />
         </div>
         <NoteBox variant="info">
+          · 행 1 = 기본(투명) · 행 2 = 줄무늬(검정 2.5%) · 행 3 = 호버(검정 4%)<br />
           · 헤더 — 배경 #dfe4ec · 글자 16px/600 · 하단 보더 검정 10%<br />
           · 셀 — 글자 14px/400 #1b2430 · 행 구분선 검정 6% 1px<br />
           · 행 배경은 투명(카드색 노출) — 줄무늬 · 호버는 검정 알파로<br />
-          · 행 1 = 기본(투명) · 행 2 = 줄무늬(검정 2.5%) · 행 3 = 호버(검정 4%)<br />
           · 선택 행 — rgb(13,110,253) 계열 (DataTables 기본값 유지)<br />
           · 페이지네이션 — 활성: primary 배경 + #ffffff · 이전/다음: #f1f4f9 + 12% 테두리
-        </NoteBox>
-
-        <ColorTable title="실제 동작 확인" level="section" />
-        <NoteBox variant="info">
-          Controls 패널로 상태를 바꿔 보려면 <strong>컴포넌트</strong> 그룹의 각 항목(버튼 · 입력·셀렉트 · KPI 카드 · 그리드 · 페이지네이션)을 사용한다
         </NoteBox>
 
       </div>

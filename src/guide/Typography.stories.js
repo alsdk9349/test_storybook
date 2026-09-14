@@ -110,27 +110,28 @@ export const 폰트_위계 = {
 
         <ColorTable title="폰트 (Pretendard, 현재 구미에서도 사용 중)" />
 
-        <ColorTable title="폰트 체인" level="section" />
         <NoteBox variant="info" title="Pretendard Variable / Pretendard">
           대체 순서: pretendard → 맑은 고딕
         </NoteBox>
 
         <SpecTable title="크기 위계" :rows="크기위계" />
 
-        <SpecTable title="투명도 위계 — 검정 알파로 층을 만든다" name-label="단계" :rows="투명도위계" />
-        <NoteBox variant="info">
-          색을 늘리지 않고 알파만으로 정보의 층을 구분한다.
-        </NoteBox>
+        <SpecTable title="투명도 위계 — 검정 알파로 층" name-label="단계" :rows="투명도위계" />
 
-        <ColorTable title="지켜야 할 것 (웹표준 연계)" level="section" />
-        <NoteBox variant="warn">
-          · KPI 숫자는 24px + bold 유지 — 줄이면 4.5:1 대비가 요구되어 위반<br />
-          · 작은 텍스트(범례 · 축)에는 상태색 대신 기본 텍스트색 + 색 마커 사용
-        </NoteBox>
+        <!-- 원본 슬라이드처럼 제목을 박스 안에 넣고, 색·크기·굵기도 슬라이드 값에 맞춘다 -->
+        <div style="background:#fdf4e5; border:1px solid #eccd93; border-radius:8px; padding:16px 18px; margin-bottom:28px;">
+          <strong style="display:block; font-size:13px; font-weight:700; color:#8f6100; margin-bottom:10px;">
+            지켜야 할 것 (웹표준 연계)
+          </strong>
+          <div style="font-size:12px; font-weight:400; color:#244046; line-height:1.9;">
+            · KPI 숫자는 24px + bold 유지 — 줄이면 4.5:1 대비가 요구되어 위반<br />
+            · 작은 텍스트(범례 · 축)에는 상태색 대신 기본 텍스트색 + 색 마커 사용
+          </div>
+        </div>
 
         <ColorTable title="다른 플랫폼 적용 가이드" level="section" />
         <NoteBox variant="info">
-          이 폰트 체인과 크기 · 투명도 위계를 그대로 가져가면 라이트 테마 톤이 동일하게 재현된다
+          이 폰트 체인과 크기 · 투명도 위계를 그대로 가져가면 라이트 테마 톤이 동일하게 재현됨
         </NoteBox>
 
       </div>

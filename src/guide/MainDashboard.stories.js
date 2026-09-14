@@ -15,15 +15,16 @@ export default {
 
 // 알람 심각도 KPI - 실서비스에 적용된 기준값
 const 심각도KPI = [
-  { name: '심각', hex: '#ce2b2d', note: 'error 토큰' },
-  { name: '높음', hex: '#8f6100', note: 'warning 토큰' },
+  { name: '심각', hex: '#ce2b2d', note: 'error' },
+  { name: '높음', hex: '#8f6100', note: 'warning' },
   {
     name: '보통',
     hex: '#8f6100',
-    note: "'높음'과 동일 — 분리 필요 (권고 #FBC02D)",
+    note: "높음과 동일 — 분리 필요 (권고 #FBC02D)",
+    noteColor: '#c0392b',
   },
-  { name: '낮음', hex: '#1b6fbf', note: 'info 토큰' },
-  { name: '정상', hex: '#1e7c4b', note: 'success 토큰' },
+  { name: '낮음', hex: '#1b6fbf', note: 'info' },
+  { name: '정상', hex: '#1e7c4b', note: 'success' },
 ];
 
 // 기타 포인트 - 다른 팔레트에서 가져와 쓰는 색
@@ -47,11 +48,13 @@ export const 대시보드_스타일 = {
 
         <ColorTable title="메인(지도) 대시보드 — 글래스 카드" level="section" />
 
-        <!-- 원본 슬라이드처럼 글래스 카드 실물을 지도 배경 위에 올려 보여준다 -->
-        <div style="background:linear-gradient(135deg,#cfe0f5,#e8f0e5 45%,#dfe7f2); border-radius:8px; padding:22px; margin-bottom:14px;">
-          <div style="max-width:300px;">
-            <GlassCard title="위젯 카드 제목">본문 영역</GlassCard>
-          </div>
+        <!--
+          글래스 카드는 반투명이라 뒤 배경색이 그대로 비친다.
+          카드가 원본 슬라이드의 색(#f4f7fc)으로 보이도록,
+          반투명 레이어를 감안한 값(#e9eef7)을 카드 크기만큼만 뒤에 깐다.
+        -->
+        <div style="max-width:300px; margin-bottom:14px; background:#e9eef7; border-radius:14px;">
+          <GlassCard title="위젯 카드 제목">본문 영역</GlassCard>
         </div>
 
         <NoteBox variant="info">
@@ -61,9 +64,18 @@ export const 대시보드_스타일 = {
           · 카드 제목 12px/600 검정 82% · 제목 밑줄 검정 8% · 선택 위젯 앰버 테두리<br />
           · 상단 헤더 — #ffffff 72% 투명(글래스) · 높이 54px<br />
           · 지도 위 글래스 구성이라 배경색 대신 투명도 · 블러가 핵심<br />
-          <br />
-          실제 렌더링은 <strong>컴포넌트 → 글래스 카드</strong>에서 확인
         </NoteBox>
+        
+        <!-- 원본 슬라이드처럼 제목을 박스 안에 넣고, 색·크기·굵기도 슬라이드 값에 맞춘다 -->
+        <div style="background:#f7fbfa; border:1px solid #e4ebe9; border-radius:8px; padding:16px 18px; margin-bottom:28px;">
+          <strong style="display:block; font-size:13px; font-weight:700; color:#00a896; margin-bottom:10px;">
+            다른 플랫폼 적용 가이드
+          </strong>
+          <div style="font-size:12px; font-weight:400; color:#244046; line-height:1.9;">
+            토큰 이름 기준으로 이식한다 (base-100 / 200 / 300 · neutral · primary …)<br />
+            차트 · 에너지 색은 별도 색상 가이드(A · B · C) 팔레트를 그대로 사용한다
+          </div>
+        </div>
 
         <ColorTable title="상태색 기준 — 알람 심각도 KPI" :rows="심각도KPI" />
         <NoteBox variant="warn">
@@ -75,11 +87,7 @@ export const 대시보드_스타일 = {
 
         <ColorTable title="기타 포인트" :rows="기타포인트" />
 
-        <ColorTable title="다른 플랫폼 적용 가이드" level="section" />
-        <NoteBox variant="info">
-          토큰 이름 기준으로 이식한다 (base-100 / 200 / 300 · neutral · primary …)<br />
-          차트 · 에너지 색은 별도 색상 가이드(A · B · C) 팔레트를 그대로 사용한다
-        </NoteBox>
+
 
       </div>
     `,
